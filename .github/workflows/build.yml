@@ -1,0 +1,44 @@
+name: Build
+
+on:
+  push:
+    tags: '*'
+  workflow_dispatch:
+
+jobs:
+  build-dropship-website-backend:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ macos-latest, ubuntu-latest, windows-latest ]
+        include:
+          - os: macos-latest
+            publishRID: osx-x64
+          - os: ubuntu-latest
+            publishRID: linux-x64
+          - os: windows-latest
+            publishRID: win-x64
+
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v2
+
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 5.0.101
+
+      - name: Publish for ${{ matrix.os }}
+        run: dotnet publish -c Release -r ${{ matrix.publishRID }} -p:PublishSingleFile=true -p:PublishTrimmed=true
+
+
+      - name: Test
+        run: dotnet test --no-restore --verbosity normal
+      
+      - name: Upload Release Asset
+        uses: xresloader/upload-to-github-release@v1.2.2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          file: "Dropship.Website.Backend/bin/Release/net5.0/${{ matrix.publishRID }}/publish/Dropship.Website.Backend;Dropship.Website.Backend/bin/Release/net5.0/${{ matrix.publishRID }}/publish/appsettings.json"
+          draft: false
