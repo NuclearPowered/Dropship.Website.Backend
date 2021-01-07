@@ -5,7 +5,7 @@ namespace Dropship.Website.Backend.Database.Entities
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public int IpAddress { get; set; }
+        public uint IpAddress { get; set; }
         public ushort Port { get; set; }
         public int OwnerUserId { get; set; }
         public int StarCount { get; set; }

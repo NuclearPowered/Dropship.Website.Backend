@@ -14,7 +14,7 @@ namespace Dropship.Website.Backend.Models.Requests.ServerList
         public string Description { get; set; }
 
         [JsonPropertyName("ipaddress")]
-        public int IpAddress { get; set; }
+        public uint IpAddress { get; set; }
 
         [JsonPropertyName("port")]
         public ushort Port { get; set; }
