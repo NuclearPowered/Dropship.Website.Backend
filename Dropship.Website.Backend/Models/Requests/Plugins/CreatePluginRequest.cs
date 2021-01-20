@@ -1,5 +1,5 @@
 using System.Text.Json.Serialization;
-using Dropship.Website.Backend.Database.Enums;
+using Dropship.Website.Backend.Database.DataTypes;
 
 namespace Dropship.Website.Backend.Models.Requests.Plugins
 {

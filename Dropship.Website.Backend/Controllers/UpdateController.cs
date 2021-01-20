@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Dropship.Website.Backend.Models.Requests.Update;
 using Dropship.Website.Backend.Models.Responses;
 using Dropship.Website.Backend.Models.Responses.Update;
 using Dropship.Website.Backend.Services;
@@ -26,9 +27,9 @@ namespace Dropship.Website.Backend.Controllers
         [AllowAnonymous]
         [EnableCors("anyorigin")]
         [HttpPost("checkmodbuildupdates")]
-        public async Task<IActionResult> CheckModBuildUpdates(string[] guids)
+        public async Task<IActionResult> CheckModBuildUpdates(CheckModBuildUpdateRequest request)
         {
-            var modBuildUpdates = await _modsService.GetLatestModBuildsForGuids(guids);
+            var modBuildUpdates = await _modsService.GetLatestModBuilds(request);
             if (modBuildUpdates == null)
             {
                 return BadRequest(new GenericResponse

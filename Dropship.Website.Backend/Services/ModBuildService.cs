@@ -29,6 +29,8 @@ namespace Dropship.Website.Backend.Services
                 VersionCode = latestModBuildVersion,
                 Version = request.Version,
                 FileName = request.FileName,
+                GameVersion = request.GameVersion,
+                GamePlatform = request.GamePlatform,
                 DownloadUrl = request.DownloadUrl,
                 Deleted = false
             };

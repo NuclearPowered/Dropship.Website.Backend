@@ -1,4 +1,4 @@
-﻿namespace Dropship.Website.Backend.Database.Enums
+﻿namespace Dropship.Website.Backend.Database.DataTypes
 {
     public enum ServerDistro
     {

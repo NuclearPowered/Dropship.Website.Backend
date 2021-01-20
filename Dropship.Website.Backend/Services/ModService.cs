@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Dropship.Website.Backend.Database;
 using Dropship.Website.Backend.Database.Entities;
 using Dropship.Website.Backend.Models.Requests.Mods;
+using Dropship.Website.Backend.Models.Requests.Update;
 using Dropship.Website.Backend.Models.Responses.Update;
 using Microsoft.EntityFrameworkCore;
 
@@ -133,13 +134,15 @@ namespace Dropship.Website.Backend.Services
             return modEntities;
         }
 
-        public async Task<List<CheckModBuildUpdateResponse>> GetLatestModBuildsForGuids(string[] guids)
+        public async Task<List<CheckModBuildUpdateResponse>> GetLatestModBuilds(CheckModBuildUpdateRequest request)
         {
             return await _database.Mods.AsNoTracking()
-                .Where(m => guids.Contains(m.Guid))
+                .Where(m => request.Guids.Contains(m.Guid))
                 .Include(m => m.Builds)
                 .SelectMany(g => g.Builds
                         .Where(mb => mb.Deleted == false)
+                        .Where(mb => mb.GamePlatform == request.GamePlatform)
+                        .Where(mb => mb.GameVersion == request.GameVersion)
                         .OrderByDescending(mb => mb.VersionCode)
                         .Take(1),
                     (m, mb) => new CheckModBuildUpdateResponse

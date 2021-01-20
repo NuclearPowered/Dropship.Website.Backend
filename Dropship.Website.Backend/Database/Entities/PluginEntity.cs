@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Dropship.Website.Backend.Database.Enums;
+using Dropship.Website.Backend.Database.DataTypes;
 
 namespace Dropship.Website.Backend.Database.Entities
 {

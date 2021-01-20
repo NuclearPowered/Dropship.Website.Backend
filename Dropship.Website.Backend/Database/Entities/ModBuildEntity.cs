@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Dropship.Website.Backend.Database.DataTypes;
 
 namespace Dropship.Website.Backend.Database.Entities
 {
@@ -26,6 +27,16 @@ namespace Dropship.Website.Backend.Database.Entities
         ///     FileName, purely for UI purposes.
         /// </summary>
         public string FileName { get; set; }
+        
+        /// <summary>
+        ///     Game Version that the mod build is for.
+        /// </summary>
+        public int GameVersion { get; set; }
+        
+        /// <summary>
+        ///     Game Platform that the mod build is for.
+        /// </summary>
+        public GamePlatform GamePlatform { get; set; }
         
         /// <summary>
         ///     Download URL for the mod build.

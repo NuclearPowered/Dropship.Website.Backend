@@ -12,8 +12,10 @@ namespace Dropship.Website.Backend.Database.Configurations
 
             builder.Property(x => x.Id).ValueGeneratedOnAdd();
             builder.Property(x => x.ModId).IsRequired();
-            builder.Property(x => x.Version).IsRequired().HasMaxLength(16);
             builder.Property(x => x.VersionCode).IsRequired();
+            builder.Property(x => x.Version).IsRequired().HasMaxLength(16);
+            builder.Property(x => x.GameVersion).IsRequired();
+            builder.Property(x => x.GamePlatform).IsRequired();
             builder.Property(x => x.FileName).IsRequired().HasMaxLength(128);
             builder.Property(x => x.Deleted).IsRequired();
 
