@@ -9,6 +9,7 @@ namespace Dropship.Website.Backend.Database.Entities
         public string Guid { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public string MarkdownDescription { get; set; }
         
         /// <summary>
         ///     Tracks the amount of times the mod has been starred.

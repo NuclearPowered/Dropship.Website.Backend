@@ -27,6 +27,7 @@ namespace Dropship.Website.Backend.Services
                 Guid = request.Guid,
                 Name = request.Name,
                 Description = request.Description,
+                MarkdownDescription = request.MarkdownDescription,
                 StarCount = 0,
                 CreatorUserId = userId,
                 ImageUrl = request.ImageUrl,
@@ -50,6 +51,7 @@ namespace Dropship.Website.Backend.Services
 
             modEntity.Name = request.Name;
             modEntity.Description = request.Description;
+            modEntity.MarkdownDescription = request.MarkdownDescription;
             modEntity.ImageUrl = request.ImageUrl;
             modEntity.UpdatedAt = DateTimeOffset.UtcNow;
 

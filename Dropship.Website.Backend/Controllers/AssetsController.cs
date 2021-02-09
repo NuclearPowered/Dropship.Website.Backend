@@ -9,33 +9,33 @@ using Microsoft.AspNetCore.Mvc;
 namespace Dropship.Website.Backend.Controllers
 {
     [Route("api/[controller]")]
-    public class ImagesController : ControllerBase
+    public class AssetsController : ControllerBase
     {
-        private readonly ImageUploadService _srv;
+        private readonly UploadService _srv;
 
-        public ImagesController(ImageUploadService srv)
+        public AssetsController(UploadService srv)
         {
             _srv = srv;
         }
 
         [Authorize]
         [HttpPost("upload")]
-        public async Task<IActionResult> CreateImageUpload([FromForm] IFormFile image)
+        public async Task<IActionResult> CreateAssetAsync([FromForm] IFormFile asset)
         {
-            var imageUrl = await _srv.UploadImage(image);
-            if (imageUrl == null)
+            var assetUrl = await _srv.UploadAsset(asset);
+            if (assetUrl == null)
             {
                 return BadRequest(new GenericResponse
                 {
                     Success = false,
-                    Message = "Could not upload file."
+                    Message = "Could not upload asset."
                 });
             }
 
             return Ok(new GenericResponse<string>
             {
                 Success = true,
-                Data = imageUrl
+                Data = assetUrl
             });
         }
     }

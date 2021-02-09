@@ -26,6 +26,7 @@ namespace Dropship.Website.Backend.Services
                 Guid = request.Guid,
                 Name = request.Name,
                 Description = request.Description,
+                MarkdownDescription = request.MarkdownDescription,
                 StarCount = 0,
                 CreatorUserId = userId,
                 ServerDistroId = request.ServerDistroId,
@@ -50,6 +51,7 @@ namespace Dropship.Website.Backend.Services
 
             pluginEntity.Name = request.Name;
             pluginEntity.Description = request.Description;
+            pluginEntity.MarkdownDescription = request.MarkdownDescription;
             pluginEntity.ImageUrl = request.ImageUrl;
             pluginEntity.UpdatedAt = DateTimeOffset.UtcNow;
 

@@ -12,6 +12,9 @@ namespace Dropship.Website.Backend.Models.Requests.Plugins
 
         [JsonPropertyName("description")]
         public string Description { get; set; }
+
+        [JsonPropertyName("markdownDescription")]
+        public string MarkdownDescription { get; set; }
         
         [JsonPropertyName("imageUrl")]
         public string ImageUrl { get; set; }

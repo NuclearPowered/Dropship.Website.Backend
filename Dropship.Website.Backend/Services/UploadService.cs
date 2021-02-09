@@ -10,28 +10,28 @@ using Microsoft.Extensions.Options;
 
 namespace Dropship.Website.Backend.Services
 {
-    public class ImageUploadService
+    public class UploadService
     {
         private readonly SpacesConfig _spacesConfig;
         private readonly S3Service _s3;
 
-        public ImageUploadService(IOptions<SpacesConfig> config, S3Service s3)
+        public UploadService(IOptions<SpacesConfig> config, S3Service s3)
         {
             _spacesConfig = config.Value;
             _s3 = s3;
         }
         
-        public async Task<string> UploadImage(IFormFile file)
+        public async Task<string> UploadAsset(IFormFile asset)
         {
             await using var stream = new MemoryStream();
-            await file.CopyToAsync(stream);
+            await asset.CopyToAsync(stream);
 
             if (stream.Length > 8388608) // 8 MB
             {
                 return null;
             }
 
-            var fileName = Guid.NewGuid() + ".png";
+            var fileName = Guid.NewGuid().ToString();
             var uploadRequest = new TransferUtilityUploadRequest
             {
                 InputStream = stream,

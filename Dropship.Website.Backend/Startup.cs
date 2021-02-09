@@ -83,7 +83,7 @@ namespace Dropship.Website.Backend
             services.AddTransient<PluginService>();
             services.AddTransient<PluginBuildService>();
             services.AddTransient<ServerJoinService>();
-            services.AddTransient<ImageUploadService>();
+            services.AddTransient<UploadService>();
 
             services.AddControllers();
         }

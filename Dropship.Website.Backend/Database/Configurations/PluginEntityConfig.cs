@@ -14,6 +14,7 @@ namespace Dropship.Website.Backend.Database.Configurations
             builder.Property(x => x.Guid).IsRequired().HasMaxLength(128);
             builder.Property(x => x.Name).IsRequired().HasMaxLength(32);
             builder.Property(x => x.Description).IsRequired().HasColumnType("mediumtext");
+            builder.Property(x => x.MarkdownDescription).IsRequired().HasColumnType("mediumtext");
             builder.Property(x => x.StarCount).IsRequired();
             builder.Property(x => x.CreatorUserId).IsRequired();
             builder.Property(x => x.ServerDistroId).IsRequired();
